@@ -3,9 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { TabsPage } from './../pages/tabs/tabs';
 import { LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
@@ -27,7 +25,7 @@ export class MyApp {
     this.initializeApp();
     const authObserver = afAuth.authState.subscribe(user => {
       if (user) {
-        this.rootPage = Page1;
+        this.rootPage = TabsPage;
         authObserver.unsubscribe();
       } else {
         this.rootPage = LoginPage;
@@ -67,3 +65,4 @@ export class MyApp {
   //   this.nav.setRoot(page.component);
   // }
 }
+

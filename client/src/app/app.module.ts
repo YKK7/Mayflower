@@ -7,26 +7,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
-
-
+import { TabsPage } from './../pages/tabs/tabs';
+import { MapPage } from './../pages/map/map';
+import { DeliveryPage } from './../pages/delivery/delivery';
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    TabsPage,
+    ResetPasswordPage,
+    MapPage,
+    DeliveryPage
   ],
   imports: [
     BrowserModule,
@@ -38,11 +37,12 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    TabsPage,
+    ResetPasswordPage,
+    MapPage,
+    DeliveryPage
   ],
   providers: [
     StatusBar,

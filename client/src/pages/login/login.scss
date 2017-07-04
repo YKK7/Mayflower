@@ -1,8 +1,10 @@
 page-login {
   form {
-    margin-bottom: 32px;
+    margin-bottom: 26px;
+    margin-top:50%;
     button {
-      margin-top: 20px;
+      margin-top: 30%;
+          
     }
   }
 
@@ -27,4 +29,14 @@ page-login {
     border-bottom: 0 !important;
   }
 
+  div.fixed-content{
+    background-image: url(../../assets/images/trees.png);
+    background-size: 100%;
+  }
+
+  button.bottom-buttons{
+    -webkit-text-fill-color: white;
+    text-shadow: 1px 1px grey;
+    font-size: 120%;
+  }
 }
