@@ -6,6 +6,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,7 @@ import { HttpModule } from '@angular/http';
 import { TabsPage } from './../pages/tabs/tabs';
 import { MapPage } from './../pages/map/map';
 import { DeliveryPage } from './../pages/delivery/delivery';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { DeliveryPage } from './../pages/delivery/delivery';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthProvider
+    AuthProvider,
+    UserProvider,
+    Geolocation
   ]
 })
 export class AppModule { }
