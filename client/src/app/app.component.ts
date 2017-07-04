@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -8,12 +9,12 @@ import { Page2 } from '../pages/page2/page2';
 
 
 @Component({
-  templateUrl: 'app.html'
+  template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = LoginPage;
 
   pages: Array<{ title: string, component: any }>;
 
