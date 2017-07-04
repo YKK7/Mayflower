@@ -1,3 +1,4 @@
+import { AuthProvider } from './../providers/auth/auth';
 import { LoginPage } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -6,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
-
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
@@ -14,18 +15,41 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any;
+  loader: any;
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public authProvider: AuthProvider,
+    public loadingCtrl: LoadingController) {
     this.initializeApp();
 
+    this.presentLoading();
+    this.authProvider.login().then((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.rootPage = Page1;
+      } else {
+        this.rootPage = LoginPage;
+      }
+      this.loader.dismiss();
+    });
+
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
-    ];
+    // this.pages = [
+    //   { title: 'Page One', component: Page1 },
+    //   { title: 'Page Two', component: Page2 }
+    // ];
+
+  }
+
+
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });
+
+    this.loader.present();
+
 
   }
 
@@ -38,9 +62,9 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-  }
+  // openPage(page) {
+  //   // Reset the content nav to have just this page
+  //   // we wouldn't want the back button to show in this scenario
+  //   this.nav.setRoot(page.component);
+  // }
 }
