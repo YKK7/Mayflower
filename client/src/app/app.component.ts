@@ -1,5 +1,4 @@
 import { AuthProvider } from './../providers/auth/auth';
-import { LoginPage } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -8,6 +7,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { LoadingController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../pages/login/login';
+
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
@@ -20,18 +22,17 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public authProvider: AuthProvider,
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afAuth: AngularFireAuth,
     public loadingCtrl: LoadingController) {
     this.initializeApp();
-
-    this.presentLoading();
-    this.authProvider.login().then((isLoggedIn) => {
-      if (isLoggedIn) {
+    const authObserver = afAuth.authState.subscribe(user => {
+      if (user) {
         this.rootPage = Page1;
+        authObserver.unsubscribe();
       } else {
         this.rootPage = LoginPage;
+        authObserver.unsubscribe();
       }
-      this.loader.dismiss();
     });
 
     // used for an example of ngFor and navigation
@@ -49,8 +50,6 @@ export class MyApp {
     });
 
     this.loader.present();
-
-
   }
 
   initializeApp() {

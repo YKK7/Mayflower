@@ -1,5 +1,7 @@
 import { environment } from './../environments/environment';
 import { LoginPage } from './../pages/login/login';
+import { SignupPage } from './../pages/signup/signup';
+import { ResetPasswordPage } from './../pages/reset-password/reset-password';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -16,12 +18,15 @@ import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     Page1,
     Page2,
-    LoginPage
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ import { HttpModule } from '@angular/http';
     MyApp,
     Page1,
     Page2,
-    LoginPage
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage
   ],
   providers: [
     StatusBar,
