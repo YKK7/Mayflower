@@ -12,9 +12,12 @@
 
 <ion-content padding>
   <div #map id="map"></div>
-  <!--<ion-card>
-      <ion-card-content>
-          <div #directionsPanel></div>
-      </ion-card-content>
-    </ion-card>-->
+  <ion-card padding>
+    <div>
+      <p>Latitude: {{locationTracker.lat}}</p>
+      <p>Longitude: {{locationTracker.lng}}</p>
+    </div>
+    <button ion-button primary (click)="start()">Start Tracking</button>
+    <button ion-button primary (click)="stop()">Stop Tracking</button>
+  </ion-card>
 </ion-content>
