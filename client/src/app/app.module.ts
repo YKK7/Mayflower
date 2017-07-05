@@ -21,6 +21,7 @@ import { DeliveryPage } from './../pages/delivery/delivery';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
 import { Geolocation } from '@ionic-native/geolocation';
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     UserProvider,
-    Geolocation
+    Geolocation,
+    LocationTrackerProvider
   ]
 })
 export class AppModule { }

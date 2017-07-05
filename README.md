@@ -18,3 +18,6 @@ npm install --save @ionic-native/geolocation
 
 npm install --save @types/googlemaps
 
+npm install --save @ionic-native/background-geolocation
+
+ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
