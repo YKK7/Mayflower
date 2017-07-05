@@ -2,17 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the LocationTrackerProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
-export class LocationTrackerProvider {
+export class LocationTracker {
 
   constructor(public http: Http) {
-    console.log('Hello LocationTrackerProvider Provider');
+    console.log('Hello LocationTracker Provider');
   }
 
 }
