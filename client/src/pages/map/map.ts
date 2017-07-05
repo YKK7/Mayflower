@@ -81,19 +81,6 @@ export class MapPage {
 
     }, (err) => console.error(err));
   }
-  // addMarker() {
-
-  //     let marker = new google.maps.Marker({
-  //         map: this.map,
-  //         label: this.labels[this.labelIndex++ % this.labels.length],
-  //         animation: google.maps.Animation.DROP,
-  //         position: this.map.getCenter()
-  //     });
-
-  //     let content = "<h4>Information!</h4>";
-  //     this.addInfoWindow(marker, content);
-  // }
-
 
   addInfoWindow(marker, content) {
 
@@ -106,31 +93,5 @@ export class MapPage {
     });
 
   }
-
-
-  // startNavigation() {
-
-  //     navigator.geolocation.getCurrentPosition(position => {
-
-  //         const directionsService = new google.maps.DirectionsService;
-  //         const directionsDisplay = new google.maps.DirectionsRenderer;
-
-  //         directionsDisplay.setMap(this.map);
-  //         directionsDisplay.setPanel(this.directionPanel.nativeElement);
-
-  //         directionsService.route({
-  //             origin: { lat: position.coords.latitude, lng: position.coords.longitude },
-  //             destination: { lat: 39.685259, lng: -75.744364 },
-  //             travelMode: google.maps.TravelMode['DRIVING']
-  //         }, (res, status) => {
-  //             if (status === google.maps.DirectionsStatus.OK) {
-  //                 directionsDisplay.setDirections(res);
-  //             } else {
-  //                 console.log("Error Loading Directions");
-  //             }
-  //         });
-
-  //     });
-  // }
 
 }
