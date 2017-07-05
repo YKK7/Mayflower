@@ -11,8 +11,8 @@ import { DeliveryPage } from './../delivery/delivery';
 })
 export class TabsPage {
 
-  tab1Root = DeliveryPage;
-  tab2Root = MapPage;
+  tab1Root = MapPage;
+  tab2Root = DeliveryPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
