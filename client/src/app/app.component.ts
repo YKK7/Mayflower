@@ -3,15 +3,14 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoadingController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+
 
 //Pages
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from './../pages/tabs/tabs';
 
 //Providers
-import { AuthProvider } from './../providers/auth/auth';
-
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
     template: `<ion-nav [root]="rootPage"></ion-nav>`

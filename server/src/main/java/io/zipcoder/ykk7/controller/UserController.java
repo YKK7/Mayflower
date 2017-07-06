@@ -31,13 +31,13 @@ public class UserController {
     public ResponseEntity<List<User>> getAll() {
         LOG.info("getting all users");
         List<User> users = new ArrayList<>();
+
         userRepository.findAll().forEach(users::add);
 
         if (users == null || users.isEmpty()){
             LOG.info("no users found");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -50,7 +50,6 @@ public class UserController {
             LOG.info("user with id {} not found", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

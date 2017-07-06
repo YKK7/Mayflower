@@ -18,12 +18,11 @@ import { MapPage } from './../pages/map/map';
 import { DeliveryPage } from './../pages/delivery/delivery';
 
 //Providers
-import { AuthProvider } from '../providers/auth/auth';
-import { UserProvider } from '../providers/user/user';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
 import { LocationTracker } from '../providers/location-tracker/location-tracker';
-
 
 @NgModule({
   declarations: [
@@ -60,7 +59,7 @@ import { LocationTracker } from '../providers/location-tracker/location-tracker'
     UserProvider,
     Geolocation,
     BackgroundGeolocation,
-    LocationTracker
+    LocationTracker,
   ]
 })
 export class AppModule { }
