@@ -11,10 +11,10 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name="USER_ID")
-    private Long id;
+    private Long userId;
 
     @Column(name="USER_NAME")
-    private String name;
+    private String userName;
 
     @Column(name="ORGANIZATION")
     private int organization;
@@ -22,26 +22,26 @@ public class User {
     @Column(name="TYPE")
     private int type;
 
-    @Column(name="LAT")
+    @Column(name="LATITUDE")
     private double latitude;
 
-    @Column(name="LONG")
+    @Column(name="LONGITUDE")
     private double longitude;
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getOrganization() {

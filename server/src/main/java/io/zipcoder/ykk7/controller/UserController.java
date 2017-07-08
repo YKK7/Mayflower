@@ -60,7 +60,7 @@ public class UserController {
         userRepository.save(user);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(user.getUserId()).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
@@ -74,8 +74,8 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        currentUser.setId(user.getId());
-        currentUser.setName(user.getName());
+        currentUser.setUserId(user.getUserId());
+        currentUser.setUserName(user.getUserName());
 
         userRepository.save(user);
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
