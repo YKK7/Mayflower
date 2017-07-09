@@ -1,19 +1,19 @@
 package io.zipcoder.ykk7.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="user")
 public class User {
 
     @Id
     @GeneratedValue
     @Column(name="USER_ID")
-    private Long userId;
+    private Long id;
 
     @Column(name="USER_NAME")
+    @NotNull
     private String userName;
 
     @Column(name="ORGANIZATION")
@@ -28,12 +28,12 @@ public class User {
     @Column(name="LONGITUDE")
     private double longitude;
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {

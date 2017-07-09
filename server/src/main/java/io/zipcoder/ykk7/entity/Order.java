@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="order")
 public class Order {
 
     @Id
@@ -15,6 +16,6 @@ public class Order {
     @Temporal(TemporalType.TIME)
     private Date timeIn;
 
-    @Column(name="LOCATION_ID")
+    @Column(name="LOCATION")
     private Location location;
 }

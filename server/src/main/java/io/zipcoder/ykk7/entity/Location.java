@@ -1,11 +1,10 @@
 package io.zipcoder.ykk7.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name="location")
 public class Location {
 
     @Id
@@ -17,6 +16,11 @@ public class Location {
     private String name;
 
     @Column(name="ADDRESS")
-    private String address;
+    private Address address;
+
+    @Column(name="GROUP")
+    private Group group;
+
+
 
 }
