@@ -34,7 +34,7 @@ public class UserController {
 
         userService.findAll().forEach(users::add);
 
-        if (users == null || users.isEmpty()){
+        if (users.isEmpty()){
             LOG.info("no users found");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

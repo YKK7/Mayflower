@@ -19,8 +19,8 @@ public class Location {
     @OneToMany(mappedBy="location")
     private List<Address> addresses;
 
-    @JoinColumn(name="GROUP")
     @ManyToOne
+    @JoinColumn(name="GROUP")
     private Group group;
 
 
