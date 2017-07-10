@@ -1,7 +1,7 @@
 package io.zipcoder.ykk7.controller;
 
 import io.zipcoder.ykk7.entity.User;
-import io.zipcoder.ykk7.repository.UserRepository;
+import io.zipcoder.ykk7.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import java.util.List;
 public class UserController {
     private final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepo){
-        this.userRepository = userRepo;
+    public UserController(UserService userService){
+        this.userService = userService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -32,7 +32,7 @@ public class UserController {
         LOG.info("getting all users");
         List<User> users = new ArrayList<>();
 
-        userRepository.findAll().forEach(users::add);
+        userService.findAll().forEach(users::add);
 
         if (users == null || users.isEmpty()){
             LOG.info("no users found");
@@ -44,7 +44,7 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<User> get(@PathVariable("id") long id){
         LOG.info("getting user with id: {}", id);
-        User user = userRepository.findOne(id);
+        User user = userService.findOne(id);
 
         if (user == null){
             LOG.info("user with id {} not found", id);
@@ -57,7 +57,7 @@ public class UserController {
     public ResponseEntity<Void> create(@RequestBody User user, UriComponentsBuilder ucBuilder){
         LOG.info("creating new user: {}", user);
 
-        userRepository.save(user);
+        userService.save(user);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
@@ -67,7 +67,7 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> update(@PathVariable long id, @RequestBody User user){
         LOG.info("updating user: {}", user);
-        User currentUser = userRepository.findOne(id);
+        User currentUser = userService.findOne(id);
 
         if (currentUser == null){
             LOG.info("User with id {} not found", id);
@@ -77,21 +77,21 @@ public class UserController {
         currentUser.setId(user.getId());
         currentUser.setUserName(user.getUserName());
 
-        userRepository.save(user);
+        userService.save(user);
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") long id){
         LOG.info("deleting user with id: {}", id);
-        User user = userRepository.findOne(id);
+        User user = userService.findOne(id);
 
         if (user == null){
             LOG.info("Unable to delete. User with id {} not found", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        userRepository.delete(id);
+        userService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

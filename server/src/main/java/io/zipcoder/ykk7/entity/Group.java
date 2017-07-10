@@ -19,5 +19,40 @@ public class Group {
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<SubGroup> subGroups;
 
-    private List<Group> neighbors;
+
+    @Column(name="LOCATIONS")
+    @OneToMany(mappedBy="group")
+    private List<Location> locations;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<SubGroup> getSubGroups() {
+        return subGroups;
+    }
+
+    public void setSubGroups(List<SubGroup> subGroups) {
+        this.subGroups = subGroups;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
 }

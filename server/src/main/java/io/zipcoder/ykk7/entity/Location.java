@@ -15,12 +15,44 @@ public class Location {
     @Column(name="LOCATION_NAME")
     private String name;
 
-    @Column(name="ADDRESS")
-    private Address address;
+    @Column(name="ADDRESSES")
+    @OneToMany(mappedBy="location")
+    private List<Address> addresses;
 
-    @Column(name="GROUP")
+    @JoinColumn(name="GROUP")
+    @ManyToOne
     private Group group;
 
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }

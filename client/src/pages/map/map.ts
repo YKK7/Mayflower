@@ -34,6 +34,7 @@ export class MapPage {
         for (const user of this.users) {
             if (user.type === 2) {
                 let firstName = user.name.substring(0, user.name.indexOf(' '));
+
                 let userLatLng = { lat: user.latitude, lng: user.longitude };
                 let marker = new google.maps.Marker({
                     map: this.map,

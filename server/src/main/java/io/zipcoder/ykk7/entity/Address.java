@@ -23,8 +23,17 @@ public class Address {
     @Column(name="ZIP")
     private Integer zip;
 
-    @Column(name="ALIAS")
-    private String alias;
+    @JoinColumn(name="location")
+    @ManyToOne
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public Long getId() {
         return id;
@@ -64,13 +73,5 @@ public class Address {
 
     public void setZip(Integer zip) {
         this.zip = zip;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
     }
 }
