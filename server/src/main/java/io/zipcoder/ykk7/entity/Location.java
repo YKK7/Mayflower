@@ -23,6 +23,17 @@ public class Location {
     @JoinColumn(name="GROUP")
     private Group group;
 
+    @Column(name="ORDERS")
+    @OneToMany(mappedBy = "location")
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public Long getId() {
         return id;

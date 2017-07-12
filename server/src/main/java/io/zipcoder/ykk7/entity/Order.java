@@ -16,7 +16,8 @@ public class Order {
     @Column(name="TIME_IN")
     private Date timeIn;
 
-    @Column(name="LOCATION")
+    @JoinColumn(name="LOCATION")
+    @ManyToOne
     private Location location;
 
     public Long getId() {
