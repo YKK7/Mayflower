@@ -8,7 +8,7 @@ import java.util.List;
 public class Location {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="LOCATION_ID")
     private Long id;
 

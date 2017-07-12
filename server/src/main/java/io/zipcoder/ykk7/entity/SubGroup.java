@@ -8,7 +8,7 @@ import java.util.List;
 public class SubGroup {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="SUBGROUP_ID")
     private Long id;
 
