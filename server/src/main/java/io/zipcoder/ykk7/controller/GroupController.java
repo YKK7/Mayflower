@@ -78,6 +78,8 @@ public class GroupController {
 
         currentGroup.setId(group.getId());
         currentGroup.setName(group.getName());
+        currentGroup.setLocations(group.getLocations());
+        currentGroup.setSubGroups(group.getSubGroups());
 
         groupService.save(group);
         return new ResponseEntity<>(currentGroup, HttpStatus.OK);
