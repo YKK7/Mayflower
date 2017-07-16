@@ -13,10 +13,10 @@ public class MayflowerApplication {
 		SpringApplication.run(MayflowerApplication.class, args);
 	}
 
-	@Bean
-	ServletRegistrationBean h2servletRegistration(){
-		ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
-		registrationBean.addUrlMappings("/console/*");
-		return registrationBean;
-	}
+//	@Bean
+//	ServletRegistrationBean h2servletRegistration(){
+//		ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
+//		registrationBean.addUrlMappings("/console/*");
+//		return registrationBean;
+//	}
 }

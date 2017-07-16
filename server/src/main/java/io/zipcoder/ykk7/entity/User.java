@@ -1,10 +1,9 @@
 package io.zipcoder.ykk7.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="user")
+@Table(name="USER")
 public class User {
 
     @Id
@@ -13,11 +12,7 @@ public class User {
     private Long id;
 
     @Column(name="USER_NAME")
-    @NotNull
     private String userName;
-
-    @Column(name="ORGANIZATION")
-    private int organization;
 
     @Column(name="TYPE")
     private int type;
@@ -42,14 +37,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public int getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(int organization) {
-        this.organization = organization;
     }
 
     public int getType() {

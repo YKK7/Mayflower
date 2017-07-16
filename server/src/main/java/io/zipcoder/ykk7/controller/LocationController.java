@@ -77,7 +77,6 @@ public class LocationController {
 
         currentLocation.setId(location.getId());
         currentLocation.setName(location.getName());
-        currentLocation.setAddresses(location.getAddresses());
         currentLocation.setGroup(location.getGroup());
 
         locationService.save(location);

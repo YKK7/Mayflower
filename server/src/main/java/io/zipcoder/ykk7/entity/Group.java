@@ -1,10 +1,11 @@
 package io.zipcoder.ykk7.entity;
 
+import com.sun.tools.javac.jvm.Gen;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="group")
+@Table(name="GROUP")
 public class Group {
 
     @Id
@@ -14,15 +15,6 @@ public class Group {
 
     @Column(name="GROUP_NAME")
     private String name;
-
-    @Column(name="SUBGROUP")
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
-    private List<SubGroup> subGroups;
-
-
-    @Column(name="LOCATIONS")
-    @OneToMany(mappedBy="group")
-    private List<Location> locations;
 
     public Long getId() {
         return id;
@@ -40,19 +32,5 @@ public class Group {
         this.name = name;
     }
 
-    public List<SubGroup> getSubGroups() {
-        return subGroups;
-    }
 
-    public void setSubGroups(List<SubGroup> subGroups) {
-        this.subGroups = subGroups;
-    }
-
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
-    }
 }

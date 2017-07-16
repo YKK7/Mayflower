@@ -1,10 +1,11 @@
 package io.zipcoder.ykk7.entity;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="location")
+@Table(name="LOCATION")
 public class Location {
 
     @Id
@@ -15,25 +16,9 @@ public class Location {
     @Column(name="LOCATION_NAME")
     private String name;
 
-    @Column(name="ADDRESSES")
-    @OneToMany(mappedBy="location")
-    private List<Address> addresses;
-
     @ManyToOne
-    @JoinColumn(name="GROUP")
+    @JoinColumn(name="GROUP_ID", referencedColumnName = "GROUP_ID")
     private Group group;
-
-    @Column(name="ORDERS")
-    @OneToMany(mappedBy = "location")
-    private List<Order> orders;
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
 
     public Long getId() {
         return id;
@@ -51,14 +36,6 @@ public class Location {
         this.name = name;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-
     public Group getGroup() {
         return group;
     }
@@ -66,4 +43,6 @@ public class Location {
     public void setGroup(Group group) {
         this.group = group;
     }
+
+
 }

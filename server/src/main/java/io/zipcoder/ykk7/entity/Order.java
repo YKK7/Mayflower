@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="order")
+@Table(name = "ORDER")
 public class Order {
 
     @Id
@@ -16,8 +16,8 @@ public class Order {
     @Column(name="TIME_IN")
     private Date timeIn;
 
-    @JoinColumn(name="LOCATION")
     @ManyToOne
+    @JoinColumn(name="LOCATION_ID", referencedColumnName = "LOCATION_ID")
     private Location location;
 
     public Long getId() {

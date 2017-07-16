@@ -28,7 +28,7 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @CrossOrigin(origins = {"http://localhost:8100","file://"})
     public ResponseEntity<List<Group>> getAll() {
         LOG.info("getting all groups");
@@ -36,14 +36,14 @@ public class GroupController {
 
         groupService.findAll().forEach(groups::add);
 
-        if (groups == null || groups.isEmpty()){
+        if (groups.isEmpty()){
             LOG.info("no groups found");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(groups, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Group> get(@PathVariable("id") long id){
         LOG.info("getting group with id: {}", id);
         Group group = groupService.findOne(id);
@@ -55,7 +55,7 @@ public class GroupController {
         return new ResponseEntity<>(group, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<Void> create(@RequestBody Group group, UriComponentsBuilder ucBuilder){
         LOG.info("creating new group: {}", group);
 
@@ -66,7 +66,7 @@ public class GroupController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Group> update(@PathVariable long id, @RequestBody Group group){
         LOG.info("updating group: {}", group);
         Group currentGroup = groupService.findOne(id);
@@ -78,14 +78,12 @@ public class GroupController {
 
         currentGroup.setId(group.getId());
         currentGroup.setName(group.getName());
-        currentGroup.setLocations(group.getLocations());
-        currentGroup.setSubGroups(group.getSubGroups());
 
         groupService.save(group);
         return new ResponseEntity<>(currentGroup, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") long id){
         LOG.info("deleting group with id: {}", id);
         Group group = groupService.findOne(id);
